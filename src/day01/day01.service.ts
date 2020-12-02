@@ -18,7 +18,7 @@ export class Day01Service {
     const numbers = fileContent.split('\n').map(line => Number.parseInt(line));
     const numbersAsASet = new Set(numbers);
 
-    return "Part One " + this.partOne(numbers, numbersAsASet) + " Part Two " + this.partTwo(numbers, numbersAsASet);    
+    return `Part One [${this.partOne(numbers, numbersAsASet)} Part Two ${this.partTwo(numbers, numbersAsASet)}]`;    
   }
 
   partOne(numbers: Array<number>, numbersAsSet: Set<number>) : string {
