@@ -11,15 +11,33 @@ export class Day03Service {
   
   processInput(): string {
     const fileContent =  this.fileReaderService.readFileAsString("./input/day03.txt");
-    
-    return this.part01(fileContent.split("\n")).toString();
+    const terrain = fileContent.split("\n");
+    return `Part 01 [${this.part01(terrain)}], Part 02 [${this.part02(terrain)}]`;
   }
 
   part01(terrain: string[]): number {
-    const position = new Point(0,0);
-    return terrain.slice(1).filter(line => {
-      position.x += 3;
-      return line.charAt(position.x % line.length) === '#';
-    }).length;
+    return this.calculateNumberOfTrees(terrain, new Point(3, 1));
   }
+
+  part02(terrain: string[]): number {
+    return this.calculateNumberOfTrees(terrain, new Point(1 , 1)) *
+           this.calculateNumberOfTrees(terrain, new Point(3 , 1)) *
+           this.calculateNumberOfTrees(terrain, new Point(5 , 1)) *
+           this.calculateNumberOfTrees(terrain, new Point(7 , 1)) *
+           this.calculateNumberOfTrees(terrain, new Point(1 , 2));
+  }
+
+  calculateNumberOfTrees(terrain: string[], slope: Point) : number{
+    const position = new Point(0, 0);
+    let numberOfTrees = 0;
+    for(position.y = slope.y; position.y < terrain.length; position.y += slope.y) {
+      position.x += slope.x;
+      if(terrain[position.y][position.x % terrain[position.y].length] === '#'){
+        numberOfTrees++;
+      }
+    }
+    return numberOfTrees;
+  }
+
+
 }
