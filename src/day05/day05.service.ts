@@ -8,11 +8,11 @@ export class Day05Service {
   constructor(private readonly fileReaderService: FileReaderService) {}
 
   processInput(): string {
-    const fileContent = this.fileReaderService.readFileAsString('./input/day05.txt');
+    const fileContent = this.fileReaderService.readFileAsString('./input/day05.txt').split("\n");
 
-    const highestSeatId = fileContent.split("\n").map(line => this.getSeatId(line)).reduce((prev, next) => prev > next ? prev : next);
+    const highestSeatId = fileContent.map(line => this.getSeatId(line)).reduce((prev, next) => prev > next ? prev : next);
 
-    return `Part 01[${highestSeatId}]`;
+    return `Part 01[${highestSeatId}] Part 02[${this.getMySeat(fileContent)}]`;
   }
 
   getRowNumber(input: string) : number{
@@ -27,5 +27,13 @@ export class Day05Service {
 
   getSeatId(input: string) : number {
     return (this.getRowNumber(input) * 8)  + this.getColumnNumber(input);
+  }
+
+  getMySeat(input: string[]) : number {
+    const seats = input.map(line => this.getSeatId(line)).sort((a, b) => a - b);
+    // Find a seat whose next one is not this one + 1. 
+    return seats.reduce((previousSeat, currentSeat) => {     
+      return (previousSeat + 1) === currentSeat? currentSeat : previousSeat;
+    }) + 1;
   }
 }
