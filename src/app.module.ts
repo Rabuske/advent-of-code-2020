@@ -7,6 +7,7 @@ import { Day04Service } from './day04/day04.service';
 import { Day05Service } from './day05/day05.service';
 import { Day06Service } from './day06/day06.service';
 import { Day07Service } from './day07/day07.service';
+import { Day08Service } from './day08/day08.service';
 import { FileReaderService } from './utils/fileReader.service';
 
 @Module({
@@ -21,6 +22,7 @@ import { FileReaderService } from './utils/fileReader.service';
     Day05Service,
     Day06Service,
     Day07Service,
+    Day08Service,
   ],
 })
 export class AppModule {}
