@@ -7,6 +7,8 @@ import { Day05Service } from './day05/day05.service';
 import { Day06Service } from './day06/day06.service';
 import { Day07Service } from './day07/day07.service';
 import { Day08Service } from './day08/day08.service';
+import { Day09Service } from './day09/day09.service';
+import { Day10Service } from './day10/day10.service';
 
 @Controller('day')
 export class AppController {
@@ -17,7 +19,9 @@ export class AppController {
               private readonly day05Service: Day05Service,
               private readonly day06Service: Day06Service,
               private readonly day07Service: Day07Service,
-              private readonly day08Service: Day08Service
+              private readonly day08Service: Day08Service,
+              private readonly day09Service: Day09Service,
+              private readonly day10Service: Day10Service,
             ) {}
 
   @Get(':id')
@@ -40,6 +44,10 @@ export class AppController {
           return this.day07Service.processInput();
         case 8:
           return this.day08Service.processInput();
+        case 9:
+          return this.day09Service.processInput();
+        case 10:
+          return this.day10Service.processInput();      
         default: 
           return "Day not valid yet";
     }
