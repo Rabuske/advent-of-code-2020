@@ -18,7 +18,7 @@ export class Day09Service {
   findErroneousNumber(numbers: number[]) : number {
     for(let i = 25; i < numbers.length; i++) {
       
-      let hasTwoNumbersThatAddToTheNumber = false;
+      let hasTwoNumbersThatAddToTheNumber = false; // BEST NAME EVER!!!
       const previous25 = new Set(numbers.slice(i-25, i));
       
       previous25.forEach(n1 => {
