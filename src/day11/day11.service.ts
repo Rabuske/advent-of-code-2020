@@ -76,7 +76,6 @@ class SeatLayout {
     }
   }
 
-
   getNumberOfOccupiedSeats(): number {
     return this.seats.map(seatRow => {
         const occupiedSeats = seatRow.match(/#/g);

@@ -28,13 +28,13 @@ export class Day03Service {
   }
 
   calculateNumberOfTrees(terrain: string[], slope: Point) : number{
-    const position = new Point(0, 0);
+    let position = new Point(0, 0);
     let numberOfTrees = 0;
-    for(position.y = slope.y; position.y < terrain.length; position.y += slope.y) {
-      position.x += slope.x;
+    for(let y = slope.y; y < terrain.length; y += slope.y){
+      position = position.add(slope); 
       if(terrain[position.y][position.x % terrain[position.y].length] === '#'){
         numberOfTrees++;
-      }
+      }      
     }
     return numberOfTrees;
   }
