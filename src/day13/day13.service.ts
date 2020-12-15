@@ -40,7 +40,7 @@ export class Day13Service {
     
     const N1 = buses.map(bus => bus.period).reduce((a, b) => a * b);
     const N1x = buses
-      .map(bus => BigInt(bus.delay) * BigInt((N1/bus.period)) * BigInt(this.findX1(N1/bus.period, bus.period))) // I ran into a problem where this number was to big, so I had to use BigInt
+      .map(bus => BigInt(bus.delay) * BigInt((N1/bus.period)) * BigInt(this.findX1(N1/bus.period, bus.period))) 
       .reduce((a,b) => a + b);
 
     return N1x % BigInt(N1);
