@@ -3,40 +3,48 @@ import { FileReaderService } from 'src/utils/fileReader.service';
 
 // https://adventofcode.com/2020/day/17
 
-interface Point3D{
+interface Point4D{
   x: number,
   y: number,
-  z: number
+  z: number,
+  w: number
 }
 class Game {
   private activeCubes: Set<string>;
 
-  constructor(initialState: string[][]){
+  constructor(initialState: string[][], private is4D: boolean){
     this.activeCubes = new Set();
     initialState.forEach((line, x) => line.forEach((column, y) => {
-      if(column === "#") this.activeCubes.add(JSON.stringify(<Point3D>{x: x, y: y, z:0}));
+      if(column === "#") this.activeCubes.add(JSON.stringify(<Point4D>{x: x, y: y, z:0, w:0}));
     }));
   }
   
-  private getNeighborsCoordinates(point: Point3D) : Point3D[] {
+  private getNeighborsCoordinates(point: Point4D) : Point4D[] {
     const neighbors = []; 
     for (let x = point.x - 1; x <= point.x + 1; x++) {
       for (let y = point.y - 1; y <= point.y + 1; y++) {
         for (let z = point.z - 1; z <= point.z + 1; z++) {
-          if(point.x === x && point.y === y && point.z === z) continue;
-          	neighbors.push({x: x, y: y, z:z});
+          if(!this.is4D){
+            if(point.x === x && point.y === y && point.z === z) continue;
+            neighbors.push({x: x, y: y, z:z, w:0});
+          } else {
+            for (let w = point.w - 1; w <= point.w + 1; w++) {
+              if(point.x === x && point.y === y && point.z === z && point.w === w) continue;
+              neighbors.push({x: x, y: y, z:z, w:w});                
+            }
+          }
         }
       }
     }
     return neighbors;
   }
 
-  private getNumberOfActiveNeighbors(point: Point3D): number {
+  private getNumberOfActiveNeighbors(point: Point4D): number {
     const neighbors = this.getNeighborsCoordinates(point);
     return neighbors.filter(neighbor => this.activeCubes.has(JSON.stringify(neighbor))).length;
   }
 
-  private getAllPointsThatNeedToBeReevaluated() : Point3D[] {
+  private getAllPointsThatNeedToBeReevaluated() : Point4D[] {
     const pointsToReevaluate = new Set<string>();
     this.activeCubes.forEach(point => {
       pointsToReevaluate.add(point);
@@ -80,9 +88,10 @@ export class Day17Service implements Processor{
       .readFileAsString('./input/day17.txt')
       .split('\n');
 
-    const game = new Game(fileContent.map(line => line.split('')));
+    const game3D = new Game(fileContent.map(line => line.split('')), false);
+    const game4D = new Game(fileContent.map(line => line.split('')), true);
     
-    return `Part 01 [${this.play6CyclesAndGetActives(game)}] Part 02 [${null}]`;
+    return `Part 01 [${this.play6CyclesAndGetActives(game3D)}] Part 02 [${this.play6CyclesAndGetActives(game4D)}]`;
   }
 
   play6CyclesAndGetActives(game: Game) : number {
