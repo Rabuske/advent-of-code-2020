@@ -11,7 +11,7 @@ interface PolicyAndPassword {
 }
 
 @Injectable()
-export class Day02Service {
+export class Day02Service implements Processor{
   constructor(private readonly fileReaderService: FileReaderService) {}
   
   processInput(): string {

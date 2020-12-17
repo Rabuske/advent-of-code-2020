@@ -9,7 +9,7 @@ interface BusInfo{
 }
 
 @Injectable()
-export class Day13Service {
+export class Day13Service implements Processor{
   constructor(private readonly fileReaderService: FileReaderService) {}
 
   processInput(): string {

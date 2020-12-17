@@ -4,7 +4,7 @@ import { FileReaderService } from 'src/utils/fileReader.service';
 // https://adventofcode.com/2020/day/15
 
 @Injectable()
-export class Day15Service {
+export class Day15Service implements Processor{
   constructor(private readonly fileReaderService: FileReaderService) {}
 
   processInput(): string {

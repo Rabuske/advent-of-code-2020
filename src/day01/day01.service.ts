@@ -10,7 +10,7 @@ interface PartialSum {
 }
 
 @Injectable()
-export class Day01Service {
+export class Day01Service implements Processor{
   constructor(private readonly fileReaderService: FileReaderService) {}
   
   processInput(): string {

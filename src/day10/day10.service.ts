@@ -104,7 +104,7 @@ class Tree {
 }
 
 @Injectable()
-export class Day10Service {
+export class Day10Service implements Processor{
   constructor(private readonly fileReaderService: FileReaderService) {}
 
   processInput(): string {

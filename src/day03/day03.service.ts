@@ -6,7 +6,7 @@ import Point from 'src/utils/point';
 
 
 @Injectable()
-export class Day03Service {
+export class Day03Service implements Processor{
   constructor(private readonly fileReaderService: FileReaderService) {}
   
   processInput(): string {

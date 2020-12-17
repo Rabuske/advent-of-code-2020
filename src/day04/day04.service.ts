@@ -5,7 +5,7 @@ import Passport from './Passport';
 // https://adventofcode.com/2020/day/4
 
 @Injectable()
-export class Day04Service {
+export class Day04Service implements Processor{
   constructor(private readonly fileReaderService: FileReaderService) {}
 
   processInput(): string {

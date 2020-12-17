@@ -76,7 +76,7 @@ class PuzzleInput {
 }
 
 @Injectable()
-export class Day16Service {
+export class Day16Service implements Processor{
   constructor(private readonly fileReaderService: FileReaderService) {}
 
   processInput(): string {

@@ -72,7 +72,7 @@ class Program {
 
 
 @Injectable()
-export class Day08Service {
+export class Day08Service implements Processor{
   constructor(private readonly fileReaderService: FileReaderService) {}
 
   processInput(): string {

@@ -25,7 +25,7 @@ class BagRule {
 }
 
 @Injectable()
-export class Day07Service {
+export class Day07Service implements Processor{
   constructor(private readonly fileReaderService: FileReaderService) {}
 
   processInput(): string {

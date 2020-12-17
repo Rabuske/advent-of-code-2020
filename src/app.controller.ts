@@ -15,6 +15,7 @@ import { Day13Service } from './day13/day13.service';
 import { Day14Service } from './day14/day14.service';
 import { Day15Service } from './day15/day15.service';
 import { Day16Service } from './day16/day16.service';
+import { Day17Service } from './day17/day17.service';
 
 @Controller('day')
 export class AppController {
@@ -34,47 +35,33 @@ export class AppController {
               private readonly day14Service: Day14Service,
               private readonly day15Service: Day15Service,
               private readonly day16Service: Day16Service,
+              private readonly day17Service: Day17Service,
             ) {}
 
   @Get(':id')
   dayNth(@Param() params): string {
     // Ideally I would dynamically instantiate a class, all following the same interface, but it is not worth for now
-    switch(Number.parseInt(params.id)){
-        case 1: 
-          return this.day01Service.processInput();        
-        case 2: 
-          return this.day02Service.processInput();
-        case 3:
-          return this.day03Service.processInput();
-        case 4:
-          return this.day04Service.processInput();  
-        case 5:
-          return this.day05Service.processInput();    
-        case 6:
-          return this.day06Service.processInput();      
-        case 7:
-          return this.day07Service.processInput();
-        case 8:
-          return this.day08Service.processInput();
-        case 9:
-          return this.day09Service.processInput();
-        case 10:
-          return this.day10Service.processInput();
-        case 11:
-          return this.day11Service.processInput();
-        case 12:
-          return this.day12Service.processInput();
-        case 13:
-          return this.day13Service.processInput();
-        case 14:
-          return this.day14Service.processInput();
-        case 15:
-          return this.day15Service.processInput();
-        case 16:
-          return this.day16Service.processInput();
-        default: 
-          return "Day not valid yet";
-    }
-    
+    const dayServices = new Map<number, Processor>([
+      [ 1, this.day01Service],
+      [ 2, this.day02Service],
+      [ 3, this.day03Service],
+      [ 4, this.day04Service],
+      [ 5, this.day05Service],
+      [ 6, this.day06Service],
+      [ 7, this.day07Service],
+      [ 8, this.day08Service],
+      [ 9, this.day09Service],
+      [10, this.day10Service],
+      [11, this.day11Service],
+      [12, this.day12Service],
+      [13, this.day13Service],
+      [14, this.day14Service],
+      [15, this.day15Service],
+      [16, this.day16Service],
+      [17, this.day17Service],
+    ]);
+
+    const day = Number.parseInt(params.id);
+    return dayServices.has(day)? dayServices.get(day).processInput() : "Day not implemented yet";
   }
 }

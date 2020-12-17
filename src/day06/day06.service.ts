@@ -10,7 +10,7 @@ interface Group {
 }
 
 @Injectable()
-export class Day06Service {
+export class Day06Service implements Processor{
   constructor(private readonly fileReaderService: FileReaderService) {}
 
   processInput(): string {

@@ -75,7 +75,7 @@ class ProgramExecution {
 }
 
 @Injectable()
-export class Day14Service {
+export class Day14Service implements Processor{
   constructor(private readonly fileReaderService: FileReaderService) {}
 
   processInput(): string {

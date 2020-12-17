@@ -76,7 +76,7 @@ class Ship {
 }
 
 @Injectable()
-export class Day12Service {
+export class Day12Service implements Processor{
   constructor(private readonly fileReaderService: FileReaderService) {}
 
   processInput(): string {

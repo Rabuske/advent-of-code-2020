@@ -87,7 +87,7 @@ class SeatLayout {
 }
 
 @Injectable()
-export class Day11Service {
+export class Day11Service implements Processor{
   constructor(private readonly fileReaderService: FileReaderService) {}
 
   processInput(): string {
