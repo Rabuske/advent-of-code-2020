@@ -46,31 +46,9 @@ export class AppController {
 
   @Get(':id')
   dayNth(@Param() params): string {
-    // Ideally I would dynamically instantiate a class, all following the same interface, but it is not worth for now
-    const dayServices = new Map<number, Processor>([
-      [ 1, this.day01Service],
-      [ 2, this.day02Service],
-      [ 3, this.day03Service],
-      [ 4, this.day04Service],
-      [ 5, this.day05Service],
-      [ 6, this.day06Service],
-      [ 7, this.day07Service],
-      [ 8, this.day08Service],
-      [ 9, this.day09Service],
-      [10, this.day10Service],
-      [11, this.day11Service],
-      [12, this.day12Service],
-      [13, this.day13Service],
-      [14, this.day14Service],
-      [15, this.day15Service],
-      [16, this.day16Service],
-      [17, this.day17Service],
-      [18, this.day18Service],
-      [19, this.day19Service],
-      [20, this.day20Service],
-    ]);
 
-    const day = Number.parseInt(params.id);
-    return dayServices.has(day)? dayServices.get(day).processInput() : "Day not implemented yet";
+    const serviceName = `day${("0" + params.id).slice(-2)}Service`;
+    if(!Object.keys(this).includes(serviceName)) return "Day not implemented yet";
+    return this[serviceName].processInput();
   }
 }
