@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { FileReaderService } from 'src/utils/fileReader.service';
-import { generateAllMatrixPermutations, rotateMatrix } from 'src/utils/matrixOperations';
+import { generateAllMatrixPermutations } from 'src/utils/matrixOperations';
 
 // https://adventofcode.com/2020/day/20
 
