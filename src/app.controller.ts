@@ -18,6 +18,7 @@ import { Day16Service } from './day16/day16.service';
 import { Day17Service } from './day17/day17.service';
 import { Day18Service } from './day18/day18.service';
 import { Day19Service } from './day19/day19.service';
+import { Day20Service } from './day20/day20.service';
 
 @Controller('day')
 export class AppController {
@@ -40,6 +41,7 @@ export class AppController {
               private readonly day17Service: Day17Service,
               private readonly day18Service: Day18Service,
               private readonly day19Service: Day19Service,
+              private readonly day20Service: Day20Service,
             ) {}
 
   @Get(':id')
@@ -65,6 +67,7 @@ export class AppController {
       [17, this.day17Service],
       [18, this.day18Service],
       [19, this.day19Service],
+      [20, this.day20Service],
     ]);
 
     const day = Number.parseInt(params.id);
