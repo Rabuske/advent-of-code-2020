@@ -143,5 +143,4 @@ export class Day22Service implements Processor{
 
     return [player1, player2];
   }
-
 }
