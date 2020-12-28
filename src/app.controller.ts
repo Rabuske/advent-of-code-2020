@@ -22,6 +22,7 @@ import { Day20Service } from './day20/day20.service';
 import { Day21Service } from './day21/day21.service';
 import { Day22Service } from './day22/day22.service';
 import { Day23Service } from './day23/day23.service';
+import { Day24Service } from './day24/day24.service';
 
 @Controller('day')
 export class AppController {
@@ -48,6 +49,7 @@ export class AppController {
               private readonly day21Service: Day21Service,
               private readonly day22Service: Day22Service,
               private readonly day23Service: Day23Service,
+              private readonly day24Service: Day24Service,
             ) {}
 
   @Get(':id')

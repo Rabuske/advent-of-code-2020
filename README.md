@@ -40,3 +40,5 @@ After solving a puzzle, I go through the (subreddit)[https://www.reddit.com/r/ad
 [] Day 18 - consider do something weird with eval()
 [] Day 19 - challenge: implement my own CFG parser/evaluator instead of using the first one I found in npm
 [] Day 19 - challenge: use Regex to solve the puzzle (part 01)
+[] Day 20 - research if there are better solutions using some matrix manipulation technics
+[] Day 23 - check if there is a way to improve the performance for part 02. It currently takes around 32 seconds to execute.
